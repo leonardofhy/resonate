@@ -1,0 +1,7 @@
+name: resonate_env
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - matplotlib
+  - numpy
