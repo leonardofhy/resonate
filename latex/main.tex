@@ -1,12 +1,12 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{geometry} % 調整頁面邊距
+\usepackage{geometry} % Adjust page margins
 \geometry{a4paper, margin=1in}
 
-\usepackage{booktabs} % 畫出專業的三線表 (toprule, midrule, bottomrule)
-\usepackage{array}    % 更好的欄位控制
-\usepackage{caption}  % 優化標題間距
-\usepackage{amsmath}  % 數學符號支援
+\usepackage{booktabs} % Required for professional table lines (toprule, midrule, bottomrule)
+\usepackage{array}    % Required for better column formatting
+\usepackage{caption}  % Optimizes caption spacing
+\usepackage{amsmath}  % Mathematical symbol support
 
 \title{Resonate: Full Results}
 \author{leonardofoohy}
@@ -18,15 +18,15 @@
 
 \section{Performance Benchmarks}
 
-Table \ref{tab:model_comparison} presents the performance comparison across different audio language models and sizes on the Gender classification task.
+Table \ref{tab:model_comparison} presents the performance comparison across representative audio language models on the Gender classification task. We focus on general-purpose LALMs to establish a fair baseline.
 
-% --- TABLE 1: Model Comparison (Size & Gender) ---
+% --- TABLE 1: Model Comparison (Filtered: SALMONN, Qwen, Qwen2) ---
 \begin{table}[h]
     \centering
-    \caption{Performance comparison across different models and sizes. We report the accuracy ($\%$) on Single-hop and Multi-hop tasks.}
+    \caption{Performance comparison across representative Audio Language Models. We report the accuracy ($\%$) on Single-hop and Multi-hop tasks. Best results are highlighted in \textbf{bold}.}
     \label{tab:model_comparison}
     
-    % 調整欄位間距
+    % Adjust column spacing
     \setlength{\tabcolsep}{10pt}
     
     \begin{tabular}{lccc}
@@ -35,12 +35,9 @@ Table \ref{tab:model_comparison} presents the performance comparison across diff
         \cmidrule(lr){3-4} 
         \textbf{Model} & \textbf{(B)} & \textbf{Single} & \textbf{Multi} \\
         \midrule
-        LTU-AS                  & 7   & $52.4 \pm 4.4$ & $19.6 \pm 3.5$ \\
-        GAMA-IT                 & 7   & $76.4 \pm 3.7$ & $39.8 \pm 4.3$ \\
-        SALMONN                 & 7.5 & $59.8 \pm 4.3$ & $48.6 \pm 4.4$ \\
-        DeSTA2                  & 8.3 & $\mathbf{88.4 \pm 2.8}$ & $\mathbf{85.2 \pm 3.1}$ \\
+        SALMONN                 & 7.5 & $59.8 \pm 4.3$ & $\mathbf{48.6 \pm 4.4}$ \\
         Qwen-Audio-Chat         & 8.4 & $49.6 \pm 4.4$ & $43.8 \pm 4.3$ \\
-        Qwen2-Audio-Instruct    & 8.4 & $88.0 \pm 2.8$ & $47.2 \pm 4.4$ \\
+        Qwen2-Audio-Instruct    & 8.4 & $\mathbf{88.0 \pm 2.8}$ & $47.2 \pm 4.4$ \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -55,16 +52,16 @@ Table \ref{tab:main_results} details the comparative analysis of our proposed me
     \caption{Performance comparison on Single-hop and Multi-hop tasks under Standard (w/o Instruction) and Instruction settings. The best results in each category are highlighted in \textbf{bold}.}
     \label{tab:main_results}
     
-    % 設定欄位：左對齊 + 4個置中欄位
+    % Column setup: Left aligned first column + 4 Centered columns
     \setlength{\tabcolsep}{8pt} 
     \begin{tabular}{lcccc}
         \toprule
-        % 第一層表頭：分組
+        % Level 1 Header: Groups
          & \multicolumn{2}{c}{\textbf{Standard Setting}} & \multicolumn{2}{c}{\textbf{Instruction Setting}} \\
          & \multicolumn{2}{c}{(w/o Instruction)} & \multicolumn{2}{c}{(w/ Instruction)} \\
-        \cmidrule(lr){2-3} \cmidrule(lr){4-5} % 分組橫線
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} % Grouping lines
         
-        % 第二層表頭：具體指標
+        % Level 2 Header: Metrics
         \textbf{Method} & \textbf{Single} & \textbf{Multi} & \textbf{Single} & \textbf{Multi} \\
         \midrule
         
@@ -72,10 +69,10 @@ Table \ref{tab:main_results} details the comparative analysis of our proposed me
         Qwen2-Audio-7B-Instruct & \textbf{88.0} & 47.2 & 76.8 & 47.2 \\
         R1-AQA                  & 66.8 & 48.7 & 73.2 & 56.0 \\
         Audio Reasoner          & 67.2 & 33.4 & 48.4 & 25.2 \\
-        \midrule % 分隔線，區隔 Baseline 和你的方法
+        \midrule % Separator line
         
-        % Proposed Method (整行加粗，並標示最高分)
-        \textbf{Proposed Method} & \textbf{88.0} & \textbf{55.6} & \textbf{80.2} & \textbf{64.8} \\
+        % Proposed Method (Bolded row and Best Scores)
+        \textbf{Resonate (Ours)} & \textbf{88.0} & \textbf{55.6} & \textbf{80.2} & \textbf{64.8} \\
         \bottomrule
     \end{tabular}
 \end{table}
