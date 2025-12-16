@@ -1,0 +1,17 @@
+{
+    "models": [
+        "Qwen2-Audio\n(Base Model)",
+        "Audio Reasoner\n(SFT)",
+        "R1-AQA\n(RL)"
+    ],
+    "single_hop": [
+        88.0,
+        67.2,
+        66.8
+    ],
+    "multi_hop": [
+        47.2,
+        33.4,
+        48.7
+    ]
+}
