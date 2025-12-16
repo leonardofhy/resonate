@@ -1,37 +1,83 @@
 \documentclass{article}
-\usepackage{graphicx} % Required for inserting images
-\usepackage{booktabs} % Required for professional table lines
-\usepackage{array}    % Required for better column formatting
+\usepackage[utf8]{inputenc}
+\usepackage{geometry} % 調整頁面邊距
+\geometry{a4paper, margin=1in}
 
-\title{Resonate}
-\author{leonardofoohy }
+\usepackage{booktabs} % 畫出專業的三線表 (toprule, midrule, bottomrule)
+\usepackage{array}    % 更好的欄位控制
+\usepackage{caption}  % 優化標題間距
+\usepackage{amsmath}  % 數學符號支援
+
+\title{Resonate: Full Results}
+\author{leonardofoohy}
 \date{December 2025}
 
 \begin{document}
 
 \maketitle
 
-\section{Introduction}
+\section{Performance Benchmarks}
 
-% Here is the requested table
+Table \ref{tab:model_comparison} presents the performance comparison across different audio language models and sizes on the Gender classification task.
+
+% --- TABLE 1: Model Comparison (Size & Gender) ---
 \begin{table}[h]
     \centering
-    \begin{tabular}{l|c|cc}
+    \caption{Performance comparison across different models and sizes. We report the accuracy ($\%$) on Single-hop and Multi-hop tasks.}
+    \label{tab:model_comparison}
+    
+    % 調整欄位間距
+    \setlength{\tabcolsep}{10pt}
+    
+    \begin{tabular}{lccc}
         \toprule
-         & \textbf{Size} & \multicolumn{2}{c}{\textbf{Gender}} \\ 
-        \cmidrule{3-4} 
-         & \textbf{(B)} & Single & Multi \\
+        & \textbf{Size} & \multicolumn{2}{c}{\textbf{Gender Accuracy}} \\ 
+        \cmidrule(lr){3-4} 
+        \textbf{Model} & \textbf{(B)} & \textbf{Single} & \textbf{Multi} \\
         \midrule
-        \textbf{LTU-AS}               & 7   & $52.4 \pm 4.4$ & $19.6 \pm 3.5$ \\
-        \textbf{GAMA-IT}              & 7   & $76.4 \pm 3.7$ & $39.8 \pm 4.3$ \\
-        \textbf{SALMONN}              & 7.5 & $59.8 \pm 4.3$ & \underline{$48.6$} $\pm 4.4$ \\
-        \textbf{DeSTA2}               & 8.3 & $\mathbf{88.4 \pm 2.8}$ & $\mathbf{85.2 \pm 3.1}$ \\
-        \textbf{Qwen-Audio-Chat}      & 8.4 & $49.6 \pm 4.4$ & $43.8 \pm 4.3$ \\
-        \textbf{Qwen2-Audio-Instruct} & 8.4 & \underline{$88.0$} $\pm 2.8$ & $47.2 \pm 4.4$ \\
+        LTU-AS                  & 7   & $52.4 \pm 4.4$ & $19.6 \pm 3.5$ \\
+        GAMA-IT                 & 7   & $76.4 \pm 3.7$ & $39.8 \pm 4.3$ \\
+        SALMONN                 & 7.5 & $59.8 \pm 4.3$ & $48.6 \pm 4.4$ \\
+        DeSTA2                  & 8.3 & $\mathbf{88.4 \pm 2.8}$ & $\mathbf{85.2 \pm 3.1}$ \\
+        Qwen-Audio-Chat         & 8.4 & $49.6 \pm 4.4$ & $43.8 \pm 4.3$ \\
+        Qwen2-Audio-Instruct    & 8.4 & $88.0 \pm 2.8$ & $47.2 \pm 4.4$ \\
         \bottomrule
     \end{tabular}
-    \caption{Performance comparison across different models and sizes.}
-    \label{tab:performance}
+\end{table}
+
+\section{Main Experimental Results}
+
+Table \ref{tab:main_results} details the comparative analysis of our proposed method against reasoning baselines under different instruction settings.
+
+% --- TABLE 2: Main Results (With/Without Instruction) ---
+\begin{table}[h]
+    \centering
+    \caption{Performance comparison on Single-hop and Multi-hop tasks under Standard (w/o Instruction) and Instruction settings. The best results in each category are highlighted in \textbf{bold}.}
+    \label{tab:main_results}
+    
+    % 設定欄位：左對齊 + 4個置中欄位
+    \setlength{\tabcolsep}{8pt} 
+    \begin{tabular}{lcccc}
+        \toprule
+        % 第一層表頭：分組
+         & \multicolumn{2}{c}{\textbf{Standard Setting}} & \multicolumn{2}{c}{\textbf{Instruction Setting}} \\
+         & \multicolumn{2}{c}{(w/o Instruction)} & \multicolumn{2}{c}{(w/ Instruction)} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-5} % 分組橫線
+        
+        % 第二層表頭：具體指標
+        \textbf{Method} & \textbf{Single} & \textbf{Multi} & \textbf{Single} & \textbf{Multi} \\
+        \midrule
+        
+        % Baselines
+        Qwen2-Audio-7B-Instruct & \textbf{88.0} & 47.2 & 76.8 & 47.2 \\
+        R1-AQA                  & 66.8 & 48.7 & 73.2 & 56.0 \\
+        Audio Reasoner          & 67.2 & 33.4 & 48.4 & 25.2 \\
+        \midrule % 分隔線，區隔 Baseline 和你的方法
+        
+        % Proposed Method (整行加粗，並標示最高分)
+        \textbf{Proposed Method} & \textbf{88.0} & \textbf{55.6} & \textbf{80.2} & \textbf{64.8} \\
+        \bottomrule
+    \end{tabular}
 \end{table}
 
 \end{document}
