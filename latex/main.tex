@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{booktabs} % Required for professional table lines
+\usepackage{array}    % Required for better column formatting
+
+\title{Resonate}
+\author{leonardofoohy }
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+% Here is the requested table
+\begin{table}[h]
+    \centering
+    \begin{tabular}{l|c|cc}
+        \toprule
+         & \textbf{Size} & \multicolumn{2}{c}{\textbf{Gender}} \\ 
+        \cmidrule{3-4} 
+         & \textbf{(B)} & Single & Multi \\
+        \midrule
+        \textbf{LTU-AS}               & 7   & $52.4 \pm 4.4$ & $19.6 \pm 3.5$ \\
+        \textbf{GAMA-IT}              & 7   & $76.4 \pm 3.7$ & $39.8 \pm 4.3$ \\
+        \textbf{SALMONN}              & 7.5 & $59.8 \pm 4.3$ & \underline{$48.6$} $\pm 4.4$ \\
+        \textbf{DeSTA2}               & 8.3 & $\mathbf{88.4 \pm 2.8}$ & $\mathbf{85.2 \pm 3.1}$ \\
+        \textbf{Qwen-Audio-Chat}      & 8.4 & $49.6 \pm 4.4$ & $43.8 \pm 4.3$ \\
+        \textbf{Qwen2-Audio-Instruct} & 8.4 & \underline{$88.0$} $\pm 2.8$ & $47.2 \pm 4.4$ \\
+        \bottomrule
+    \end{tabular}
+    \caption{Performance comparison across different models and sizes.}
+    \label{tab:performance}
+\end{table}
+
+\end{document}
