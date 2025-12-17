@@ -43,12 +43,8 @@ def create_clean_chart():
     # ---------------------------------------------------------
     # 4. 基準線 (Reference Lines) - 這是比較差異的關鍵，建議保留
     # ---------------------------------------------------------
-    ax.axhline(y=88.0, color=c_single, linestyle='--', linewidth=1.5, alpha=0.6)
-    ax.axhline(y=47.2, color=c_multi, linestyle='--', linewidth=1.5, alpha=0.6)
-    
-    # 基準線標籤 (放在圖表左側內部，低調且清晰)
-    ax.text(0.4, 89, 'Base Single-hop (88.0%)', color=c_single, fontweight='bold', fontsize=10, ha='left')
-    ax.text(0.4, 48.5, 'Base Multi-hop (47.2%)', color=c_multi, fontweight='bold', fontsize=10, ha='left')
+    ax.axhline(y=88.0, color=c_single, linestyle='--', linewidth=2.5, alpha=0.7)
+    ax.axhline(y=47.2, color=c_multi, linestyle='--', linewidth=2.5, alpha=0.7)
 
     # ---------------------------------------------------------
     # 5. 軸與外觀設置
@@ -58,7 +54,7 @@ def create_clean_chart():
     ax.set_title('Performance Comparison: Single-hop vs. Multi-hop', fontsize=16, fontweight='bold', pad=20)
     
     ax.set_xticks(x)
-    ax.set_xticklabels(models, fontsize=12)
+    ax.set_xticklabels(models, fontsize=14, fontweight='bold')
     ax.set_ylim(0, 100) # 固定 0-100%
     ax.legend(loc='upper right', frameon=True, fontsize=11)
     
